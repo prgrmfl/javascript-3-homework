@@ -198,7 +198,8 @@ not the best choice, it can be much more difficult to think about and debug.
 ```js
 {
   function copy_array(arr) {
-    // write this
+    let stringArr = JSON.stringify(arr);
+    return JSON.parse(stringArr);
   }
 
   const array = ['a', 'b'];
@@ -225,6 +226,13 @@ not the best choice, it can be much more difficult to think about and debug.
     // write this by building a new array from scratch
     // the paramenter should only be used on the right side of =
     // the new one should only be used on the left side of =
+    //newArr:
+    const newArr = [];
+    //pushing value of arr to newArr:
+    for (let i in arr) {
+      newArr.push(arr[i]);
+    }
+    return newArr;
   }
 
   const array = ['a', 'b'];
