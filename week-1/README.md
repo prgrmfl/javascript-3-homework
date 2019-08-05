@@ -2,7 +2,7 @@
 
 | :mortar_board: | your emoji | your comments | coach emoji | coach comments |
 | --- | --- | --- | --- | --- |
-| :egg: __[reference type arguments](./reference-type-args.md)__ | | | | |
+| :egg: __[reference type arguments](./reference-type-args.md)__ | :wavy_dash: | | | |
 | :egg: __[closure: 0 & 1](../exercises-closure)__ | | | | |
 | :egg: __[event loop: 1 & 2](../exercises-event-loop)__ | | | | |
 | :egg: __[promise practice](./promise-practice.md)__ | | | | | 
