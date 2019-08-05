@@ -257,7 +257,9 @@ not the best choice, it can be much more difficult to think about and debug.
 ```js
 {
   function copy_object(obj) {
-    // write this
+    let stringObj = JSON.stringify(obj);
+    console.log(stringObj);
+    return JSON.parse(stringObj);
   }
 
   const object = { a: 1, b: 2 };
@@ -270,7 +272,7 @@ not the best choice, it can be much more difficult to think about and debug.
   const by_copy_2 = copy_object(object_2);
   console.assert(object_2.x === by_copy_2.x);
   console.assert(object_2['z'] === by_copy_2['z']);
-  console.assert(object_2['it'] === by_copy_2.ti);
+  console.assert(object_2['it'] === by_copy_2.it);
   console.assert(object_2 !== by_copy_2);
 }
 ```
@@ -283,8 +285,13 @@ not the best choice, it can be much more difficult to think about and debug.
 {
   function start_new_object(obj) {
     // write this by building a new object from scratch
-    // the paramenter should only be used on the right side of =
+    // the parameter should only be used on the right side of =
     // the new one should only be used on the left side of =
+    const newObj = {};
+    for (let key in obj) {
+      newObj[key] = obj[key];
+    }
+    return newObj;
   }
 
   const object = { a: 1, b: 2 };
@@ -297,7 +304,7 @@ not the best choice, it can be much more difficult to think about and debug.
   const new_obj_2 = start_new_object(object_2);
   console.assert(object_2.x === new_obj_2.x);
   console.assert(object_2['z'] === new_obj_2['z']);
-  console.assert(object_2['it'] === new_obj_2.ti);
+  console.assert(object_2['it'] === new_obj_2.it);
   console.assert(object_2 !== new_obj_2);
 }
 ```
