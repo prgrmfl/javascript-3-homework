@@ -36,17 +36,14 @@
       <h3>functions as arguments (a prelude)</h3>
       <script id="functions-as-arguments-snip">
 { // --- a quick explanation of passing and returning functions
-
   function arg_func(){};
   
   function returns_arg(x) { return x };
   const returned_same = returns_arg(arg_func);
   console.nativeAssert(arg_func === returned_same, "returned-1");
-
   function returns_new_function(x) { return function() {}}
   const returned_new = returns_new_function(arg_func);
   console.nativeAssert(arg_func !== returned_new, "returned-2");
-
 } // --- a quick explanation of passing and returning functions
       </script>
       <button onclick="copy_code('functions-as-arguments-snip')">run in console</button>
@@ -62,15 +59,11 @@
   // any function that returns a new function creates a closure
   // returning a function that was passed as an argument doesn't count
   // the returned function must be declared inside the function call (frame on pytut)
-
   function does_create_a_closure(func, arg) {
-
     const arg_is_function = typeof arg === "function";
     const return_value = func(arg);
     const arg_is_returned = return_value === arg;
-
     let creates_a_closure;
-
     // does it return a function?
     if (typeof return_value !== "function") {
       creates_a_closure = false;
@@ -83,26 +76,19 @@
     } else {
       creates_a_closure = true;
     }
-
     return creates_a_closure;
   }
-
   function a(x) {
     return x;
   }
-
   const a_1 = does_create_a_closure(a, 4);
-  console.assert(a_1 === null, "exercise 1", "a");
-
-  const a_2 = does_create_a_closure(a, function(){});
-  console.assert(a_2 === null, "exercise 1", "b");
-
+  console.log(a_1 === null, "exercise 1", "a"); //false 'exercise 1' 'a'
+  const a_2 = does_create_a_closure(a, function(){}); 
+  console.log(a_2 === null, "exercise 1", "b"); //false 'exercise 1' 'b'
   const a_3 = does_create_a_closure(a, []);
-  console.assert(a_3 === null, "exercise 1", "c");
-
+  console.log(a_3 === null, "exercise 1", "c"); //false 'exercise 1' 'c'
   const a_4 = does_create_a_closure(a, a);
-  console.assert(a_4 === null, "exercise 1", "d");
-
+  console.log(a_4 === null, "exercise 1", "d"); //false 'exercise 1' 'd'
 }
       </script>
       <button onclick="copy_code('snippet-1')">run in console</button>
@@ -118,15 +104,11 @@
   // any function that returns a new function creates a closure
   // returning a function that was passed as an argument doesn't count
   // the returned function must be declared inside the function call (frame on pytut)
-
   function does_create_a_closure(func, arg) {
-
     const arg_is_function = typeof arg === "function";
     const return_value = func(arg);
     const arg_is_returned = return_value === arg;
-
     let creates_a_closure;
-
     // does it return a function?
     if (typeof return_value !== "function") {
       creates_a_closure = false;
@@ -139,26 +121,19 @@
     } else {
       creates_a_closure = true;
     }
-
     return creates_a_closure;
   }
-
   function b(x) {
     return function() {}
   }
-
   const b_1 = does_create_a_closure(b, 4);
-  console.assert(b_1 === null, "exercise 2", "a");
-
+  console.log(b_1, "exercise 2", "a"); //true 'exercise 2' 'a'
   const b_2 = does_create_a_closure(b, function(){});
-  console.assert(b_1 === null, "exercise 2", "b");
-
+  console.log(b_2, "exercise 2", "b"); //true 'exercise 2' 'b'
   const b_3 = does_create_a_closure(b, []);
-  console.assert(b_3 === null, "exercise 2", "c");
-
+  console.log(b_3, "exercise 2", "c"); //true 'exercise 2' 'c'
   const b_4 = does_create_a_closure(b, b);
-  console.assert(b_4 === null, "exercise 2", "d");
-
+  console.log(b_4, "exercise 2", "d"); //true 'exercise 2' 'd'
 }
       </script>
       <button onclick="copy_code('snippet-2')">run in console</button>
@@ -174,15 +149,11 @@
   // any function that returns a new function creates a closure
   // returning a function that was passed as an argument doesn't count
   // the returned function must be declared inside the function call (frame on pytut)
-
   function does_create_a_closure(func, arg) {
-
     const arg_is_function = typeof arg === "function";
     const return_value = func(arg);
     const arg_is_returned = return_value === arg;
-
     let creates_a_closure;
-
     // does it return a function?
     if (typeof return_value !== "function") {
       creates_a_closure = false;
@@ -195,10 +166,8 @@
     } else {
       creates_a_closure = true;
     }
-
     return creates_a_closure;
   }
-
   function c(x) {
     if (typeof x === "function") {
       return x;
@@ -206,19 +175,14 @@
       return function() {}; 
     }
   }
-
   const c_1 = does_create_a_closure(c, 4);
-  console.assert(c_1 === null, "exercise 3", "a");
-
+  console.log(c_1, "exercise 3", "a"); //true 'exercise 3' 'a'
   const c_2 = does_create_a_closure(c, function(){});
-  console.assert(c_1 === null, "exercise 3", "b");
-
+  console.log(c_2, "exercise 3", "b"); //false 'exercise 3' 'b'
   const c_3 = does_create_a_closure(c, []);
-  console.assert(c_3 === null, "exercise 3", "c");
-
+  console.log(c_3, "exercise 3", "c"); //true 'exercise 3' 'c'
   const c_4 = does_create_a_closure(c, c);
-  console.assert(c_4 === null, "exercise 3", "d");
-
+  console.log(c_4, "exercise 3", "d"); //false 'exercise 3' 'd'
 }
       </script>
       <button onclick="copy_code('snippet-3')">run in console</button>
@@ -234,15 +198,11 @@
   // any function that returns a new function creates a closure
   // returning a function that was passed as an argument doesn't count
   // the returned function must be declared inside the function call (frame on pytut)
-
   function does_create_a_closure(func, arg) {
-
     const arg_is_function = typeof arg === "function";
     const return_value = func(arg);
     const arg_is_returned = return_value === arg;
-
     let creates_a_closure;
-
     // does it return a function?
     if (typeof return_value !== "function") {
       creates_a_closure = false;
@@ -255,10 +215,8 @@
     } else {
       creates_a_closure = true;
     }
-
     return creates_a_closure;
   }
-
   function d(x) {
     if (typeof x !== "function") {
       return x;
@@ -266,19 +224,14 @@
       return function() {}; 
     }
   }
-
   const d_1 = does_create_a_closure(d, 4);
-  console.assert(d_1 === null, "exercise 4", "a");
-
+  console.log(d_1, "exercise 4", "a"); //false 'exercise 4' 'a'
   const d_2 = does_create_a_closure(d, function(){});
-  console.assert(d_1 === null, "exercise 4", "b");
-
+  console.log(d_2, "exercise 4", "b"); //true 'exercise 4' 'b'
   const d_3 = does_create_a_closure(d, []);
-  console.assert(d_3 === null, "exercise 4", "c");
-
-  const d_4 = does_create_a_closure(d, c);
-  console.assert(d_4 === null, "exercise 4", "d");
-
+  console.log(d_3, "exercise 4", "c"); //false 'exercise 4' 'c'
+  const d_4 = does_create_a_closure(d, "c");
+  console.log(d_4, "exercise 4", "d"); //false 'exercise 4' 'd'
 }
       </script>
       <button onclick="copy_code('snippet-4')">run in console</button>
