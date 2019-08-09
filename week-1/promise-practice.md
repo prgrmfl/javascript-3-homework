@@ -103,7 +103,7 @@ But in the second one there is only one then, and it doesn't have any descriptio
 
 - [promise api](https://javascript.info/promise-api)
 
-##Summary
+## Summary
 
 There are 5 static methods of Promise class:
 
