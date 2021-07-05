@@ -56,20 +56,20 @@
 
   const one = close_a_value(1);
   const one_returns = one();
-  console.assert(one_returns === null, "exercise 1", "a:", one_returns);
+  console.assert(one_returns === 1, "exercise 1", "a:", one_returns);
 
   const two = close_a_value(2);
   const two_returns = two();
-  console.assert(two_returns === null, "exercise 1", "b:", two_returns);
+  console.assert(two_returns === 2, "exercise 1", "b:", two_returns);
 
-  const three = null;
-  const three_returns = null;
+  const three = close_a_value(4);
+  const three_returns = three();
   console.assert(three_returns === 4, "exercise 1", "c:", three_returns);
 
-  const sum = one + two + three; // fix this line to pass the assert
+  const sum = one() + two() + three(); // fix this line to pass the assert
   console.assert(sum === 7, "exercise 1", "d");
 
-  ; // use one, two and three to pass this assert
+  const product = 2 * one() + two() + 3 * three(); // use one, two and three to pass this assert
   console.assert(product === 16, "exercise 1", "e");
 
 }
@@ -98,17 +98,17 @@
 
   const result_1a = closure_1(8);
   const result_1b = closure_2(8);
-  console.assert(result_1a === null, "exercise 2", "a:", result_1a)
-  console.assert(result_1b === null, "exercise 2", "b:", result_1b)
+  console.assert(result_1a === 11, "exercise 2", "a:", 11)
+  console.assert(result_1b === "83", "exercise 2", "b:", "83")
 
   const result_2c = closure_1(true);
   const result_2d = closure_2(true);
-  console.assert(result_2c === null, "exercise 2", "c:", result_2c)
-  console.assert(result_2d === null, "exercise 2", "d:", result_2d)
+  console.assert(result_2c === 4, "exercise 2", "c:", 4)
+  console.assert(result_2d === "true3", "exercise 2", "d:", "true3")
 
-  ; // write this line using a call to closure_1
-  ; // write this line using a call to closure_2
-  console.assert(result_3e === result3f, "exercise 2", "e");
+  const result_3e = closure_1(""); // write this line using a call to closure_1
+  const result_3f = closure_2(""); // write this line using a call to closure_2
+  console.assert(result_3e === result_3f, "exercise 2", "e:", "3");
 }
       </script>
       <button onclick="copy_code('solution-2')">run in console</button>
@@ -135,25 +135,25 @@
   const closure_1 = close_it("a");
 
   const result_1 = closure_1("c");
-  console.assert(result_1 === null, "exercise 3", "a", result_1);
+  console.assert(result_1 === "abcd", "exercise 3", "a", "abcd");
 
   const result_2 = closure_1("x");
-  console.assert(result_2 === null, "exercise 3", "b", result_2);
+  console.assert(result_2 === "abxd", "exercise 3", "b", "abxd");
 
 
   const closure_2 = close_it("iii");
 
   const result_3 = closure_2("2");
-  console.assert(result_3 === null, "exercise 3", "c", result_3);
+  console.assert(result_3 === "iiib2d", "exercise 3", "c", "iiib2d");
 
   const result_4 = closure_2("--");
-  console.assert(result_4 === null, "exercise 3", "d", result_4);
+  console.assert(result_4 === "iiib--d", "exercise 3", "d", "iiib--d");
 
 
   const result_5 = closure_1(8);
-  console.assert(result_5 === null, "exercise 3", "e");  
+  console.assert(result_5 === "ab8d", "exercise 3", "e", "ab8d");  
 
-  ; // write this line with a call to closure_2
+  const result_6 = closure_2(" "); // write this line with a call to closure_2
   console.assert(result_6 === "iiib d", "exercise 3", "f");
 }
       </script>
@@ -179,25 +179,25 @@
   const closure_4_5 = close_it(4, 5);
 
   const result_1 = closure_4_5(200);
-  console.assert(result_1 === null, "exercise 4", "a:", result_1);
+  console.assert(result_1 === 205, "exercise 4", "a:", result_1);
 
   const result_2 = closure_4_5(-3);
-  console.assert(result_1 === null, "exercise 4", "b:", result_2);
+  console.assert(result_2 === 2, "exercise 4", "b:", result_2);
 
 
   const closure_false_true = close_it(false, true);
 
   const result_3 = closure_false_true(200);
-  console.assert(result_3 === null, "exercise 4", "c:", result_3);
+  console.assert(result_3 === 201, "exercise 4", "c:", result_3);
 
   const result_4 = closure_false_true(-3);
-  console.assert(result_4 === null, "exercise 4", "d:", result_4);  
+  console.assert(result_4 === -2, "exercise 4", "d:", result_4);  
 
 
   const result_5 = closure_4_5(1);
-  console.assert(result_5 === null, "exercise 4", "e");
+  console.assert(result_5 === 6, "exercise 4", "e");
 
-  ; // write this line using both closures and "+""
+  const result_6 = closure_false_true(0) + closure_4_5(0); // write this line using both closures and "+""
   console.assert(result_6 === 6, "exercise 5", "f");
 }
       </script>
